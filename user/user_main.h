@@ -19,41 +19,6 @@
 #define SPI_FLASH_SIZE_MAP 6
 #endif
 
-#ifndef OTA_FLASH_SIZE_K
-#define OTA_FLASH_SIZE_K 4096
-#endif
-
-#if SPI_FLASH_SIZE_MAP == 3 || SPI_FLASH_SIZE_MAP == 6
-#define FIRMWARE_POS      ((OTA_FLASH_SIZE_K/2)*1024/2)+0x1000
-#define FIRMWARE_SIZE     ((OTA_FLASH_SIZE_K/2)*1024/2)-0x1000
-#elif SPI_FLASH_SIZE_MAP == 4 || SPI_FLASH_SIZE_MAP == 8
-#define FIRMWARE_POS      ((OTA_FLASH_SIZE_K/4)*1024/2)+0x1000
-#define FIRMWARE_SIZE     ((OTA_FLASH_SIZE_K/4)*1024/2)-0x1000
-#elif SPI_FLASH_SIZE_MAP == 9
-#define FIRMWARE_POS      ((OTA_FLASH_SIZE_K/4)*1024/4)+0x1000
-#define FIRMWARE_SIZE     ((OTA_FLASH_SIZE_K/4)*1024/4)-0x1000
-#else
-#define FIRMWARE_POS      ((OTA_FLASH_SIZE_K*1024)/2)+0x1000
-#define FIRMWARE_SIZE     ((OTA_FLASH_SIZE_K*1024)/2)-0x1000
-#endif
-
-#if SPI_FLASH_SIZE_MAP == 0
-#define INIT_DATA_POS   0x7C
-#elif SPI_FLASH_SIZE_MAP == 2
-#define INIT_DATA_POS   0xFC
-#elif SPI_FLASH_SIZE_MAP == 3 || SPI_FLASH_SIZE_MAP == 5
-#define INIT_DATA_POS   0x1FC
-#elif SPI_FLASH_SIZE_MAP == 4 || SPI_FLASH_SIZE_MAP == 6
-#define INIT_DATA_POS   0x3FC
-#elif SPI_FLASH_SIZE_MAP == 8
-#define INIT_DATA_POS   0x7FC
-#elif SPI_FLASH_SIZE_MAP == 9
-#define INIT_DATA_POS   0xFFC
-#else
-#error "The flash map is not supported"
-#endif
-
-#define INIT_DATA_LEN   128
 
 typedef enum {
     GPIO0 = 0,
