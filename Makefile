@@ -119,9 +119,7 @@ DEPENDS_eagle.app.v6 = \
 #	-DTXRX_RXBUF_DEBUG
 #	-DWLAN_CONFIG_CCX
 CONFIGURATION_DEFINES =	-DICACHE_FLASH \
-                        -DGLOBAL_DEBUG_ON \
-                        -DFATFS_DEF_UINT32_AS_INT \
-                        -DUSE_FILELIB_STDIO_COMPAT_NAMES
+                        -DGLOBAL_DEBUG_ON
 
 DEFINES +=				\
 	$(UNIVERSAL_TARGET_DEFINES)	\
@@ -144,11 +142,8 @@ DDEFINES +=				\
 # Required for each makefile to inherit from the parent
 #
 
-INCLUDES := $(INCLUDES) -I $(PDIR)include \
-			-I $(PDIR)fatfs/include \
-			-I $(PDIR)libesphttpd/include \
-			-I $(PDIR)mqtt/include
-
+INCLUDES := $(INCLUDES) -I $(PDIR)include
+			
 PDIR := ../$(PDIR)
 sinclude $(PDIR)Makefile
 
